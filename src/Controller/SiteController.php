@@ -37,6 +37,6 @@ class SiteController extends Controller
      */
     public function adminDashboard()
     {
-        return new Response('This is admin dashboard');
+        return $this->render('site/admin-dashboard.html.twig');
     }
 }

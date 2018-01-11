@@ -26,6 +26,9 @@ security:
               login_path: login
               check_path: login
             # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            logout:
+              path: /logout
+              target: /
     access_control:
       - { path: ^/admin, roles: ROLE_ADMIN }
     encoders:
