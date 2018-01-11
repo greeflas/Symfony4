@@ -16,4 +16,8 @@ Installation
     
 3. Run server
 
-    `$ docker-compose build && docker-compose up`
+    `$ docker-compose build && docker-compose up`'
+
+4. And go to [http://127.0.0.1](http://127.0.0.1)
+
+> For accessing a container use `$ docker-compose exec php bash` command
