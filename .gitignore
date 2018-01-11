@@ -12,3 +12,8 @@
 
 # other files
 .idea
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###

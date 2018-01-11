@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\MessageGenerator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,19 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ArticleController extends Controller
 {
+    /**
+     * Show random motivation message.
+     *
+     * @param MessageGenerator $messageGenerator
+     * @return Response
+     *
+     * @Route("/article/motivate-me", name="article_motivate")
+     */
+    public function motivationMessage(MessageGenerator $messageGenerator) : Response
+    {
+        return new Response($messageGenerator->getHappyMessage());
+    }
+
     /**
      * Renders article by slug.
      *
