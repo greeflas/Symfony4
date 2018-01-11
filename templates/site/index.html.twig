@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to the Symfony 4 Demo Project!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="about-project">
+    <h1>Welcome to the Symfony!</h1>
+    <p>This is a demo project for learning the Symfony 4 Framework.</p>
+    <p>
+        The source code of this project available on
+        <a href="https://github.com/greeflas/Symfony4#symfony-4-demo-project"
+           target="_blank"
+           rel="noopener">
+            GitHub
+        </a>
+        page.
+    </p>
+</div>
+<nav class="menu">
+    <h2>Pages of this project</h2>
+    <ul>
+        <li>
+            <a href="{{ path('article_show') }}">Article page</a>
+        </li>
+    </ul>
+</nav>
+{% endblock %}

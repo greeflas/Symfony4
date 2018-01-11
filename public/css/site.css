@@ -1,0 +1,42 @@
+/* About project */
+.about-project {
+    padding: 80px 0;
+    background-color: #acd79e;
+    text-align: center;
+}
+
+.about-project > h1 {
+    margin-bottom: 40px;
+    color: #fff;
+    font-size: 60px;
+}
+
+.about-project > p {
+    color: #317f2b;
+    font-size: 30px;
+}
+
+.about-project a {
+    color: #028600;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 250ms;
+}
+
+.about-project a:hover {
+    color: #fff;
+}
+
+/* Menu */
+nav.menu {
+    text-align: center;
+}
+
+nav.menu > h2 {
+    margin: 20px 0;
+}
+
+nav.menu ul {
+    padding: 0;
+    list-style: none;
+}
