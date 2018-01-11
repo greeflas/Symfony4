@@ -5,6 +5,7 @@ namespace App\Controller;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Site controller.
@@ -25,5 +26,17 @@ class SiteController extends Controller
     {
         $logger->info('User viewed home page.');
         return $this->render('site/index.html.twig');
+    }
+
+    /**
+     * Renders admin dashboard.
+     *
+     * @return Response
+     *
+     * @Route("/admin/dashboard", name="admin_dashboard")
+     */
+    public function adminDashboard()
+    {
+        return new Response('This is admin dashboard');
     }
 }
