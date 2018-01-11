@@ -1,0 +1,42 @@
+.login-form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 280px;
+    height: 200px;
+    margin: auto;
+}
+
+.login-form .controls-group {
+    margin-bottom: 20px;
+}
+
+.login-form .controls-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.login-form .controls-group input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 8px;
+    outline: 0;
+    border: 1px solid #ccc;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px 8px;
+    border: 0;
+    background-color: #028600;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.login-form button:hover {
+    cursor: pointer;
+    background-color: #317f2b;
+}

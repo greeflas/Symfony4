@@ -20,7 +20,7 @@ class SiteController extends Controller
      * @param LoggerInterface $logger The logger instance.
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("/")
+     * @Route("/", name="home")
      */
     public function index(LoggerInterface $logger)
     {
