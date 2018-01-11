@@ -5,10 +5,10 @@ security:
           memory:
             users:
               admin:
-                password: admin
+                password: $2y$12$.V7JFpOORjlwouJuyt3sZuWyZ3IkCtfBCkyPqlW0fsbtg8EjhHU9i # admin
                 roles: 'ROLE_ADMIN'
               user:
-                password: qwe
+                password: $2y$12$bGQprCEJo05k8QlhcFWhaeZbSY0Uo8beII6pG2gZtYjkfS1ClRXBK # qwe
                 roles: 'ROLE_USER'
     firewalls:
         dev:
@@ -27,4 +27,6 @@ security:
     access_control:
       - { path: ^/admin, roles: ROLE_ADMIN }
     encoders:
-      Symfony\Component\Security\Core\User\User: plaintext
+      Symfony\Component\Security\Core\User\User:
+        algorithm: bcrypt
+        cost: 12
