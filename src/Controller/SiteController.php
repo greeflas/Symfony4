@@ -6,6 +6,7 @@ use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Site controller.
@@ -38,5 +39,24 @@ class SiteController extends Controller
     public function adminDashboard()
     {
         return $this->render('site/admin-dashboard.html.twig');
+    }
+
+    /**
+     * Translate a some message.
+     *
+     * @param string $message
+     * @param TranslatorInterface $translator
+     *
+     * @return Response
+     *
+     * @Route(
+     *     "/translate-to-{_locale}/{message}",
+     *     name="translate",
+     *     requirements={"_locale": "en|ru"}
+     * )
+     */
+    public function translate(string $message, TranslatorInterface $translator) : Response
+    {
+        return new Response($translator->trans($message));
     }
 }

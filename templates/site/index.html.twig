@@ -32,6 +32,9 @@
         <li>
             <a href="{{ path('admin_dashboard') }}">Admin dashboard</a>
         </li>
+        <li>
+            <a href="{{ path('translate', {'locale': 'ru', 'message': 'Hello world'}) }}">Translate message</a>
+        </li>
     </ul>
 </nav>
 {% endblock %}
