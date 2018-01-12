@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Event\AdminDashboardAccessedEvent;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -32,12 +34,17 @@ class SiteController extends Controller
     /**
      * Renders admin dashboard.
      *
+     * @param LoggerInterface $logger
+     *
      * @return Response
      *
      * @Route("/admin/dashboard", name="admin_dashboard")
      */
-    public function adminDashboard()
+    public function adminDashboard(LoggerInterface $logger)
     {
+        $event = new AdminDashboardAccessedEvent($logger);
+        (new EventDispatcher())->dispatch(AdminDashboardAccessedEvent::NAME, $event);
+
         return $this->render('site/admin-dashboard.html.twig');
     }
 
