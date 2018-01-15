@@ -21,3 +21,10 @@ Installation
 4. And go to [http://127.0.0.1](http://127.0.0.1)
 
 > For accessing a container use `$ docker-compose exec php bash` command
+
+Tests
+-----
+
+For running tests use following command
+
+`$ docker-compose exec php ./bin/phpunit`

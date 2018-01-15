@@ -6,9 +6,12 @@ RUN apt-get update && \
     apt-get -y --no-install-recommends install \
     zip \
     unzip \
+    zlib1g-dev \
     curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
+
+    docker-php-ext-install zip && \
 
     curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/local/bin --filename=composer && \
