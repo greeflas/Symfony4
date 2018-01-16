@@ -35,6 +35,9 @@
         <li>
             <a href="{{ path('translate', {'locale': 'ru', 'message': 'Hello world'}) }}">Translate message</a>
         </li>
+        <li>
+            <a href="{{ path('site_debug', {'param': 'this is some param value'}) }}">Debug</a>
+        </li>
     </ul>
 </nav>
 {% endblock %}

@@ -66,4 +66,20 @@ class SiteController extends Controller
     {
         return new Response($translator->trans($message));
     }
+
+    /**
+     * Display how `dump()` function works.
+     *
+     * @param string $param
+     *
+     * @return Response
+     *
+     * @Route("/debug/{param}", name="site_debug")
+     */
+    public function debug($param) : Response
+    {
+        dump($param, $this);
+
+        return $this->render('site/debug.html.twig', compact('param'));
+    }
 }
