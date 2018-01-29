@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,16 +25,23 @@ class ProductController extends Controller
      */
     public function index(): Response
     {
+        $category = new Category();
+        $category->setName('Computer Peripherals');
+
         $product = new Product();
         $product->setName('Monitor');
         $product->setPrice(500.50);
         $product->setDescription('Good monitor for programmers.');
+        $product->setCategory($category);
 
         $em = $this->getDoctrine()->getManager();
+        $em->persist($category);
         $em->persist($product);
         $em->flush();
 
-        return new Response('Saved new product with ID ' . $product->getId());
+        $response = sprintf('Saved new product with ID: %s and new category with ID: %s', $product->getId(), $category->getId());
+
+        return new Response($response);
     }
 
     /**
@@ -41,23 +49,24 @@ class ProductController extends Controller
      *
      * Show product details.
      *
-     * @param Product $product
+     * @param int $id
      *
      * @return Response
      */
-    public function show(Product $product): Response
+    public function show(int $id): Response
     {
-//        $product = $this->getDoctrine()
-//            ->getRepository(Product::class)
-//            ->find($id);
-//
-//        if (null === $product) {
-//            throw $this->createNotFoundException(sprintf('No product found for ID %d', $id));
-//        }
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->findOneByIdJoinedToCategory($id);
 
-        return new Response(
-            sprintf('Check out this great product: %s ($%d)', $product->getName(), $product->getPrice())
-        );
+        if (null === $product) {
+            throw $this->createNotFoundException(sprintf('No product found for ID %d', $id));
+        }
+
+
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
     }
 
     /**

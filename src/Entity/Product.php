@@ -32,6 +32,12 @@ class Product
     private $price;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -85,5 +91,21 @@ class Product
     public function setPrice(float $price): void
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
     }
 }
