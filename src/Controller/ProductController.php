@@ -7,6 +7,7 @@ use App\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -26,7 +27,9 @@ class ProductController extends Controller
     public function index(): Response
     {
         $category = new Category();
-        $category->setName('Computer Peripherals');
+        $category->translate('en')->setName('Computer Peripherals');
+        $category->translate('fr')->setName('Computer Peripherals FR');
+        $category->mergeNewTranslations();
 
         $product = new Product();
         $product->setName('Monitor');
@@ -50,11 +53,15 @@ class ProductController extends Controller
      * Show product details.
      *
      * @param int $id
+     * @param Request $request
      *
      * @return Response
      */
-    public function show(int $id): Response
+    public function show(int $id, Request $request): Response
     {
+        // for testing of translation trait
+        $request->setLocale('fr');
+
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findOneByIdJoinedToCategory($id);
@@ -78,7 +85,7 @@ class ProductController extends Controller
      *
      * @return RedirectResponse
      */
-    public function update(int $id) : RedirectResponse
+    public function update(int $id): RedirectResponse
     {
         $em = $this->getDoctrine()->getManager();
         $product = $em->getRepository(Product::class)->find($id);

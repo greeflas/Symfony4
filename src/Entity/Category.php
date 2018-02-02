@@ -4,23 +4,21 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class Category
 {
+    use Translatable;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $name;
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
@@ -41,22 +39,6 @@ class Category
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     /**
